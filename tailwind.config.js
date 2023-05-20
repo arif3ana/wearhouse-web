@@ -13,6 +13,11 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: ["Figtree", ...defaultTheme.fontFamily.sans],
+                manrope: ["Manrope"],
+            },
+            colors: {
+                first: "#F2F2F2",
+                second: "#FCFCFC",
             },
         },
     },
