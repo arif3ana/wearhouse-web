@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -31,6 +32,8 @@ Route::redirect('/', '/login');
 
 Route::middleware(['auth', 'verified'])->prefix('dashboard')->name('dashboard.')->group(function () {
     Route::resource('/', DashboardController::class);
+    Route::post('/category', [CategoryController::class, 'store'])->name('category');
+
 });
 
 // Route::get('/dashboard', function () {

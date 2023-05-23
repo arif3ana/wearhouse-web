@@ -3,7 +3,7 @@ import { Link } from "@inertiajs/react";
 export default function Sidebar() {
     return (
         <>
-            <aside className="fixed z-50 w-[240px] h-full bg-first shadow-2xl shadow-black  rounded-r-[60px]">
+            <aside className="fixed z-10 w-[240px] h-full bg-first shadow-2xl shadow-black  rounded-r-[60px]">
                 <div className="flex flex-col p-[30px] overflow-y-auto h-full">
                     <a
                         href="/"
@@ -38,7 +38,8 @@ export default function Sidebar() {
                                 <Link
                                     href={route("logout")}
                                     method="post"
-                                    className=" flex flex-col-revers gap-1"
+                                    as="button"
+                                    className="flex flex-col-revers gap-1"
                                 >
                                     <img src="./icons/logout.svg" />
                                     Sign out

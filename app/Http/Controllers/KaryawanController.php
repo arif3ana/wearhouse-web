@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Karyawan;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
-use App\Models\Barang;
-use App\Models\Category;
 
-class DashboardController extends Controller
+class KaryawanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,11 +15,9 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $barang = Barang::with('category')->get();
-        $category = Category::all();
-        return Inertia::render('Dashboard/Index', [
-            'barangs' => $barang,
-            'categories' => $category
+        $employe = Karyawan::all();
+        return Inertia::render('Dashboard/Karyawan/Index', [
+            'employes' => $employe
         ]);
     }
 
@@ -31,7 +28,7 @@ class DashboardController extends Controller
      */
     public function create()
     {
-        return inertia('Dashboard/Create');
+        //
     }
 
     /**
@@ -42,20 +39,7 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'category_id' => 'required',
-            'nama_barang' => 'required|unique:barangs',
-            'jumlah_barang' => 'required|numeric'
-        ]);
-
-        $data['user_id'] = auth()->user()->id;
-
-        Barang::create($data);
-
-        return redirect()->route('dashboard.index')->with([
-            'message' => 'Data berhasil di simpan',
-            'type' => 'success',
-        ]);
+        //
     }
 
     /**

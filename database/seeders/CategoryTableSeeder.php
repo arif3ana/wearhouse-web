@@ -17,11 +17,9 @@ class CategoryTableSeeder extends Seeder
         $categories = [
             [
                 'name' => 'Elektronik',
-                'slug' => 'elektronik'
             ],
             [
                 'name' => 'Alat Tulis',
-                'slug' => 'alat-tulis'
             ],
         ];
         Category::insert($categories);
