@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\BarangController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +20,12 @@ use Inertia\Inertia;
 */
 
 Route::redirect('/', '/login');
+Route::middleware(['auth', 'verified'])->prefix('dashboard')->name('dashboard.')->group(function () {
+    Route::resource('/', DashboardController::class);
+    Route::post('/category', [CategoryController::class, 'store'])->name('category');
+    Route::resource('/karyawan', KaryawanController::class);
+    Route::put('/karyawan/{id}/restore', [KaryawanController::class, 'restore'])->name('karyawan.restore');
+});
 
 // Route::get('/', function () {
 //     return Inertia::render('Welcome', [
@@ -30,11 +36,6 @@ Route::redirect('/', '/login');
 //     ]);
 // });
 
-Route::middleware(['auth', 'verified'])->prefix('dashboard')->name('dashboard.')->group(function () {
-    Route::resource('/', DashboardController::class);
-    Route::post('/category', [CategoryController::class, 'store'])->name('category');
-
-});
 
 // Route::get('/dashboard', function () {
 //     return Inertia::render('Dashboard');

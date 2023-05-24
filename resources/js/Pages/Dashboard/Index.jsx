@@ -3,7 +3,6 @@ import { Head } from "@inertiajs/react";
 import Create from "./Create";
 import DataGudang from "./DataGudang";
 import CreateCategory from "./CreateCategory";
-import Modal from "@/Components/Modal";
 export default function Dashboard({ auth, barangs, categories }) {
     return (
         <>

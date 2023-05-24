@@ -16,4 +16,5 @@ class Karyawan extends Model
         'name',
         'nik'
     ];
+
 }

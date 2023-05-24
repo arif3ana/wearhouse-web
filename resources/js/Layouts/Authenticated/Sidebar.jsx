@@ -13,12 +13,17 @@ export default function Sidebar() {
                     </a>
                     <div className="links flex flex-col mt-[80px] h-full gap-[50px]">
                         <div className="text-left">
-                            <div className="p-2 pl-4 bg-[#B4CD93]">
-                                <a href="#">Dashboard</a>
-                            </div>
-                            <div className="p-2 pl-4 mt-4">
-                                <a href="#">Data karyawan</a>
-                            </div>
+                            <Link href={route("dashboard.index")}>
+                                <div className="p-2 pl-4 bg-[#B4CD93]">
+                                    <p>Dashboard</p>
+                                </div>
+                            </Link>
+
+                            <Link href={route("dashboard.karyawan.index")}>
+                                <div className={`p-2 pl-4 mt-4`}>
+                                    <p>Data karyawan</p>
+                                </div>
+                            </Link>
                             <div className="p-2 pl-4 mt-4">
                                 <a href="#">Data barang</a>
                             </div>
@@ -41,7 +46,7 @@ export default function Sidebar() {
                                     as="button"
                                     className="flex flex-col-revers gap-1"
                                 >
-                                    <img src="./icons/logout.svg" />
+                                    <img src="/icons/logout.svg" />
                                     Sign out
                                 </Link>
                             </div>

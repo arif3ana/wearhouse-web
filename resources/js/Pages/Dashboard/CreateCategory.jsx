@@ -2,7 +2,6 @@ import TextInput from "@/Components/TextInput";
 import PrimaryButton from "@/Components/PrimaryButton";
 import InputError from "@/Components/InputError";
 import { useForm } from "@inertiajs/react";
-import Modal from "@/Components/Modal";
 
 export default function CreateCategory() {
     const { data, setData, post, processing, errors } = useForm({
