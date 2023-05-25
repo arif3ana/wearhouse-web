@@ -24,9 +24,11 @@ export default function Sidebar() {
                                     <p>Data karyawan</p>
                                 </div>
                             </Link>
-                            <div className="p-2 pl-4 mt-4">
-                                <a href="#">Data barang</a>
-                            </div>
+                            <Link href={route("dashboard.barang.index")}>
+                                <div className="p-2 pl-4 mt-4">
+                                    <p href="#">Data barang</p>
+                                </div>
+                            </Link>
                             <div className="p-2 pl-4 mt-4">
                                 <a href="#">pengiriman barang</a>
                             </div>

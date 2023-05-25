@@ -2,6 +2,7 @@ import InputError from "@/Components/InputError";
 import InputLabel from "@/Components/InputLabel";
 import PrimaryButton from "@/Components/PrimaryButton";
 import TextInput from "@/Components/TextInput";
+import CreateCategory from "./CreateCategory";
 import { useForm } from "@inertiajs/react";
 export default function Create({ categories }) {
     const { data, setData, post, processing, errors } = useForm({
@@ -104,12 +105,13 @@ export default function Create({ categories }) {
                 <div className="flex flex-col items-end justify-end mt-5">
                     <PrimaryButton
                         data-modal-target="createCategory-modal"
-                        data-modal-toggle="createCategory-modal"
+                        data-modal-show="createCategory-modal"
                         type="button"
                         className=" justify-center bg-gradient-to-r from-[#B4CD93] to-[#427A5B] hover:shadow-xl"
                     >
                         New Category
                     </PrimaryButton>
+                    <CreateCategory />
                 </div>
             </div>
         </>

@@ -80,7 +80,7 @@ class KaryawanController extends Controller
     {
         $data = $request->validate([
             'name' => 'nullable|unique:karyawans,name,'.$karyawan->id,
-            'nik' => 'nullable|numeric|min:0|max:999999'
+            'nik' => 'nullable|numeric|min:0|max:9999999999'
         ]);
 
         $karyawan->update($data);
