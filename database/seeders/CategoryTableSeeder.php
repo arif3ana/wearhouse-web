@@ -21,6 +21,12 @@ class CategoryTableSeeder extends Seeder
             [
                 'name' => 'Alat Tulis',
             ],
+            [
+                'name' => 'Kendaraan',
+            ],
+            [
+                'name' => 'Meubeul',
+            ],
         ];
         Category::insert($categories);
     }

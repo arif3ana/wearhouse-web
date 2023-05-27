@@ -7,7 +7,7 @@ import TextInput from "@/Components/TextInput";
 import { Head, Link, useForm } from "@inertiajs/react";
 
 export default function Register() {
-    const { data, setData, post, processing, errors, reset } = useForm({
+    const { data, setData, post, processing, errors } = useForm({
         name: "",
         wearhouse_name: "",
         email: "",
@@ -15,11 +15,11 @@ export default function Register() {
         // password_confirmation: "",
     });
 
-    useEffect(() => {
-        return () => {
-            reset("password", "password_confirmation");
-        };
-    }, []);
+    // useEffect(() => {
+    //     return () => {
+    //         reset("password", "password_confirmation");
+    //     };
+    // }, []);
 
     const handleOnChange = (event) => {
         setData(event.target.name, event.target.value);
@@ -99,7 +99,6 @@ export default function Register() {
                         name="password"
                         value={data.password}
                         className="mt-1 block w-full"
-                        autoComplete="new-password"
                         onChange={handleOnChange}
                         required
                     />

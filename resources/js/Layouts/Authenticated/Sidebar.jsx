@@ -26,15 +26,19 @@ export default function Sidebar() {
                             </Link>
                             <Link href={route("dashboard.barang.index")}>
                                 <div className="p-2 pl-4 mt-4">
-                                    <p href="#">Data barang</p>
+                                    <p>Data barang</p>
                                 </div>
                             </Link>
-                            <div className="p-2 pl-4 mt-4">
-                                <a href="#">pengiriman barang</a>
-                            </div>
-                            <div className="p-2 pl-4 mt-4">
-                                <a href="#">Belanja gudang</a>
-                            </div>
+                            <Link href={route("dashboard.pengiriman.index")}>
+                                <div className="p-2 pl-4 mt-4">
+                                    <p>pengiriman barang</p>
+                                </div>
+                            </Link>
+                            <Link href={route("dashboard.belanja.index")}>
+                                <div className="p-2 pl-4 mt-4">
+                                    <p>Belanja gudang</p>
+                                </div>
+                            </Link>
                             <div className="p-2 pl-4 mt-4">
                                 <a href="#">Laporann</a>
                             </div>

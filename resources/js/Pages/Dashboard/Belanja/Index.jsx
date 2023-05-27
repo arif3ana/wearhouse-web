@@ -1,17 +1,20 @@
 import Authenticated from "@/Layouts/Authenticated/Index";
 import SecondaryButton from "@/Components/SecondaryButton";
 import DangerButton from "@/Components/DangerButton";
-import { Head, Link, useForm } from "@inertiajs/react";
-
-export default function Barang({ auth, barangs }) {
+import { Head, useForm, Link } from "@inertiajs/react";
+export default function Belanja({ auth, barangs }) {
     const { delete: destroy } = useForm();
+
+    const zero = barangs.filter((barang) => {
+        return barang["jumlah_barang"] === 0;
+    });
 
     return (
         <>
             <Head title="Data-Barang" />
             <Authenticated auth={auth}>
                 <div className="bg-second p-5 mt-[70px]">
-                    <h1 className="mb-4 text-2xl">Data Barang Gudang</h1>
+                    <h1 className="mb-4 text-2xl">Data Belanja Gudang</h1>
                     <table className=" w-full table-auto">
                         <thead className="bg-[#F7F7F7] h-[40px]">
                             <tr>
@@ -22,20 +25,14 @@ export default function Barang({ auth, barangs }) {
                             </tr>
                         </thead>
                         <tbody className="text-center">
-                            {barangs.map((barang) => (
+                            {zero.map((barang) => (
                                 <tr
                                     key={barang.id}
                                     className="border-b-4 border-[#F7F7F7] h-[55px]"
                                 >
                                     <td>{barang.nama_barang}</td>
                                     <td className="flex flex-row justify-center mt-2">
-                                        <div
-                                            className={`${
-                                                barang.jumlah_barang === 0
-                                                    ? "bg-[#FCBEBE]"
-                                                    : "bg-[#BCE8D0]"
-                                            } w-max py-1 px-5 rounded-md`}
-                                        >
+                                        <div className="bg-[#FCBEBE] w-max py-1 px-5 rounded-md">
                                             {barang.jumlah_barang}
                                         </div>
                                     </td>

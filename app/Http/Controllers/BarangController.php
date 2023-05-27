@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Barang;
 use App\Models\Category;
-use App\Models\Karyawan;
-use App\Models\Pengiriman;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -21,10 +19,8 @@ class BarangController extends Controller
     public function index()
     {
         $barang = Barang::with('category')->get();
-        $employes = Karyawan::all();
         return Inertia::render('Dashboard/Barang/index', [
             'barangs' => $barang,
-            'employes' => $employes
         ]);
     }
 
@@ -35,7 +31,7 @@ class BarangController extends Controller
      */
     public function create()
     {
-        //
+       //
     }
 
     /**
@@ -103,5 +99,14 @@ class BarangController extends Controller
     {
         $barang->delete();
         return redirect()->route('dashboard.barang.index');
+    }
+
+    // menampilkan data belanja gudang
+    public function belanja()
+    {
+        $barang = Barang::with('category')->get();
+        return Inertia::render('Dashboard/Belanja/Index', [
+            'barangs' => $barang,
+        ]);
     }
 }

@@ -6,10 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\PengirimanController;
 use App\Http\Controllers\ProfileController;
-use App\Models\Pengiriman;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,8 +26,8 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->name('dashboard.')
     Route::resource('/karyawan', KaryawanController::class);
     Route::put('/karyawan/{id}/restore', [KaryawanController::class, 'restore'])->name('karyawan.restore');
     Route::resource('/barang', BarangController::class);
-    // Route pengiriman barang not workking
-    Route::post('/barang', [BarangController::class, 'sand'])->name('barang.sand');
+    Route::resource('/pengiriman', PengirimanController::class);
+    Route::get('/belanja', [BarangController::class, 'belanja'])->name('belanja.index');
 });
 
 // Route::get('/', function () {

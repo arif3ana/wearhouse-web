@@ -14,6 +14,7 @@ class Barang extends Model
     use HasFactory;
 
     protected $fillable = ['user_id', 'category_id', 'nama_barang', 'jumlah_barang'];
+    public $attributes = ['jumlah_barang'];
 
     public function category(): BelongsTo
     {

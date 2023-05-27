@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Barang;
 use App\Models\Category;
+use App\Models\Karyawan;
 
 class DashboardController extends Controller
 {
@@ -16,11 +17,15 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $barang = Barang::with('category')->get();
+        $barang = Barang::with('category')->latest()->limit(5)->get();
+        $belanja = Barang::where('jumlah_barang', 0)->with('category')->limit(3)->get();
         $category = Category::all();
+        $employe = Karyawan::where('user_id', auth()->user()->id)->latest()->limit(3)->get();
         return Inertia::render('Dashboard/Index', [
             'barangs' => $barang,
-            'categories' => $category
+            'belanja' => $belanja,
+            'categories' => $category,
+            'karyawan' => $employe
         ]);
     }
 
