@@ -11,7 +11,13 @@ export default function KaryawanGudang({ karyawan }) {
                             key={employe.id}
                             className="border-b-4 border-[#F7F7F7] h-[55px]"
                         >
-                            <td>image</td>
+                            <td className="flex justify-center items-center">
+                                <img
+                                    className="w-[60px] h-[60px] rounded-full"
+                                    src={`/storage/${employe.image}`}
+                                    alt={employe.name}
+                                />
+                            </td>
                             <td>{employe.name}</td>
                             <td>{employe.nik}</td>
                         </tr>

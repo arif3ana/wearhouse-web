@@ -6,12 +6,18 @@ import Authenticated from "@/Layouts/Authenticated/Index";
 import { useForm, Head } from "@inertiajs/react";
 export default function Create({ auth }) {
     const { data, setData, post, processing, errors } = useForm({
+        image: "",
         name: "",
         nik: "",
     });
 
     const handleOnChange = (event) => {
-        setData(event.target.name, event.target.value);
+        setData(
+            event.target.name,
+            event.target.type === "file"
+                ? event.target.files[0]
+                : event.target.value
+        );
     };
 
     const submit = (e) => {
@@ -28,6 +34,32 @@ export default function Create({ auth }) {
                     <form onSubmit={submit}>
                         <h1 className="mb-4 text-2xl">Tambah Karyawan Baru</h1>
                         <div className="flex flex-col gap-2 w-[400px]">
+                            <div>
+                                <InputLabel
+                                    htmlFor="image"
+                                    value="Poto"
+                                    className="mt-4"
+                                />
+
+                                <TextInput
+                                    id="image"
+                                    name="image"
+                                    type="file"
+                                    className="mt-1 bg-white  border border-slate-300 rounded-md py-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 w-full"
+                                    onChange={handleOnChange}
+                                    required
+                                />
+                                <p className="text-gray-400">
+                                    Di rekomendasikan ukuran untuk gambar 60 x
+                                    60
+                                </p>
+
+                                <InputError
+                                    message={errors.image}
+                                    className="mt-2"
+                                />
+                            </div>
+
                             <div>
                                 <InputLabel
                                     htmlFor="name"

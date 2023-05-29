@@ -25,6 +25,7 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->name('dashboard.')
     Route::post('/category', [CategoryController::class, 'store'])->name('category');
     Route::resource('/karyawan', KaryawanController::class);
     Route::put('/karyawan/{id}/restore', [KaryawanController::class, 'restore'])->name('karyawan.restore');
+    Route::delete('/karyawan/{id}/destroy_permanen', [KaryawanController::class, 'destroy_permanen'])->name('karyawan.destroy_permanen');
     Route::resource('/barang', BarangController::class);
     Route::resource('/pengiriman', PengirimanController::class);
     Route::get('/belanja', [BarangController::class, 'belanja'])->name('belanja.index');

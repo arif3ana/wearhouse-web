@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Karyawan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
 
@@ -43,11 +44,13 @@ class KaryawanController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
+            'image' => 'required|image|file|max:1024',
             'name' => 'required',
             'nik' => 'required|numeric|min:0|max:99999'
         ]);
 
         $data['user_id'] = auth()->user()->id;
+        $data['image'] = Storage::disk('public',)->put('imgKaryawan', $request->file('image'));
 
         Karyawan::create($data);
         return redirect()->route('dashboard.karyawan.index')->with([
@@ -90,12 +93,23 @@ class KaryawanController extends Controller
     public function update(Request $request, Karyawan $karyawan)
     {
         $data = $request->validate([
+            'image' => 'nullable|image|file|max:1024',
             'name' => 'nullable|unique:karyawans,name,'.$karyawan->id,
             'nik' => 'nullable|numeric|min:0|max:9999999999'
         ]);
 
+        if ($request->file('image')) {
+            $data['image'] = Storage::disk('public')->put('imgKaryawan', $request->file('image'));
+            Storage::disk('public')->delete($karyawan->image);
+        } else {
+            $data['image'] = $karyawan->image;
+        }
+
         $karyawan->update($data);
-        return redirect()->route('dashboard.karyawan.index');
+        return redirect()->route('dashboard.karyawan.index')->with([
+            'message' => 'data Karyawan berhasil di edit',
+            'type' => 'success'
+        ]);
     }
 
     /**
@@ -107,12 +121,29 @@ class KaryawanController extends Controller
     public function destroy(Karyawan $karyawan)
     {
         $karyawan->delete();
-        return redirect()->route('dashboard.karyawan.index');
+        Storage::disk('public')->delete($karyawan->image);
+        return redirect()->route('dashboard.karyawan.index')->with([
+            'message' => 'data Karyawan berhasil di hapus',
+            'type' => 'error'
+        ]);
     }
 
     public function restore($id)
     {
         Karyawan::onlyTrashed()->where('id', $id)->restore();
-        return redirect()->route('dashboard.karyawan.index');
+        return redirect()->route('dashboard.karyawan.index')->with([
+            'message' => 'Karyawan berhasil di Kembalikan. untuk kelengkapan data, upload kembali poto karyawan',
+            'type' => 'success'
+        ]);
+    }
+
+    public function destroy_permanen($id)
+    {
+        $karyawan = Karyawan::onlyTrashed()->where('id', $id);
+        $karyawan->forceDelete();
+        return redirect()->route('dashboard.karyawan.index')->with([
+            'message' => 'data Karyawan berhasil di hapus permanen',
+            'type' => 'error'
+        ]);
     }
 }

@@ -18,21 +18,25 @@ class KaryawanTableSeeder extends Seeder
         $employes = [
             [
                 'user_id' => 1,
+                'image' => '1.jpg',
                 'name' => 'Supardi',
                 'nik' => 823456
             ],
             [
                 'user_id' => 1,
+                'image' => '2.jpg',
                 'name' => 'Yayan',
                 'nik' => 845987
             ],
             [
                 'user_id' => 1,
+                'image' => '3.jpg',
                 'name' => 'Rohmat',
                 'nik' => 836951
             ],
             [
                 'user_id' => 1,
+                'image' => '4.jpg',
                 'name' => 'Miko',
                 'nik' => 869283
             ],
