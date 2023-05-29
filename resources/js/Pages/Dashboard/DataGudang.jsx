@@ -1,6 +1,9 @@
 import PrimaryButton from "@/Components/PrimaryButton";
 import { Link } from "@inertiajs/react";
 export default function DataGudang({ barangs }) {
+    const zero = barangs.filter((barang) => {
+        return barang["jumlah_barang"] > 0;
+    });
     return (
         <div className="bg-second p-5">
             <h1 className="mb-4 text-2xl">Data Barang Gudang</h1>
@@ -13,7 +16,7 @@ export default function DataGudang({ barangs }) {
                     </tr>
                 </thead>
                 <tbody className="text-center">
-                    {barangs.map((barang) => (
+                    {zero.map((barang) => (
                         <tr
                             key={barang.id}
                             className="border-b-4 border-[#F7F7F7] h-[55px]"

@@ -1,11 +1,25 @@
 import Authenticated from "@/Layouts/Authenticated/Index";
 import { Head } from "@inertiajs/react";
 import Kirim from "./Kirim";
-export default function Pengiriman({ auth, karyawans, barangs, pengirimans }) {
+import FlashMessage from "@/Components/FlashMessage";
+export default function Pengiriman({
+    auth,
+    karyawans,
+    barangs,
+    pengirimans,
+    flashMessage,
+}) {
     return (
         <>
             <Head title="Pengiriman" />
             <Authenticated auth={auth}>
+                {flashMessage?.message && (
+                    <FlashMessage
+                        message={flashMessage.message}
+                        type={flashMessage.type}
+                        className={`absolute top-[9%] w-[40%] right-[5%]`}
+                    />
+                )}
                 <div className="bg-second w-full p-5 mt-[30px]">
                     <Kirim karyawans={karyawans} barangs={barangs} />
                 </div>

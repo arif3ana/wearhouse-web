@@ -17,10 +17,20 @@ export default function CreateCategory() {
 
         post(route("dashboard.category"));
     };
+
     return (
         <>
+            <PrimaryButton
+                data-modal-target="modalEl"
+                data-modal-toggle="modalEl"
+                type="button"
+                className=" justify-center bg-gradient-to-r from-[#B4CD93] to-[#427A5B] hover:shadow-xl"
+            >
+                New Category
+            </PrimaryButton>
+
             <div
-                id="createCategory-modal"
+                id="modalEl"
                 tabIndex="-1"
                 aria-hidden="true"
                 className="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
@@ -32,7 +42,7 @@ export default function CreateCategory() {
                             <button
                                 type="button"
                                 className=" text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
-                                data-modal-hide="createCategory-modal"
+                                data-modal-hide="modalEl"
                             >
                                 <svg
                                     aria-hidden="true"
@@ -76,7 +86,6 @@ export default function CreateCategory() {
                                         className="mt-2"
                                     />
                                 </div>
-
                                 <div className="flex flex-col items-end justify-end mt-5">
                                     <PrimaryButton
                                         className=" justify-center bg-gradient-to-r from-[#B4CD93] to-[#427A5B] hover:shadow-xl"

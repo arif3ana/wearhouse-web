@@ -17,8 +17,8 @@ class PengirimanController extends Controller
      */
     public function index()
     {
-        $employes = Karyawan::all();
-        $barangs = Barang::all();
+        $employes = Karyawan::where('user_id', auth()->user()->id)->get();
+        $barangs = Barang::where('user_id', auth()->user()->id)->get();
         $pengirimans = Pengiriman::where('user_id', auth()->user()->id)->with(['karyawan', 'barang'])->get();
         return Inertia::render('Dashboard/Pengiriman/Index', [
             "karyawans" => $employes,
@@ -59,12 +59,17 @@ class PengirimanController extends Controller
         }
         $result = $jumlah - $request->jumlah_pengiriman;
         if ($result < 0) {
-            return dd('jumlah barang kurang');
-            // Use a sweet alert for warning message
+            return redirect()->route('dashboard.pengiriman.index')->with([
+                'message' => 'Jumlah barang tidak cukup!!',
+                'type' => 'error'
+            ]);
         }
         Barang::where('jumlah_barang', $jumlah)->update(['jumlah_barang' => $result]);
         Pengiriman::create($kirim);
-        return redirect()->route('dashboard.pengiriman.index');
+        return redirect()->route('dashboard.pengiriman.index')->with([
+                'message' => 'Barang siap di kirim',
+                'type' => 'success'
+            ]);
     }
 
     /**

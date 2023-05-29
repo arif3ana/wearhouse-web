@@ -18,6 +18,9 @@ class CategoryController extends Controller
 
         Category::create($category);
 
-        return redirect()->route('dashboard.index');
+        return redirect()->route('dashboard.index')->with([
+            'message' => 'Category baru berhasil di tambahkan!!',
+            'type' => 'success'
+        ]);
     }
 }

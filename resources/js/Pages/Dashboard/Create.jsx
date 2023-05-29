@@ -103,14 +103,6 @@ export default function Create({ categories }) {
                     </div>
                 </form>
                 <div className="flex flex-col items-end justify-end mt-5">
-                    <PrimaryButton
-                        data-modal-target="createCategory-modal"
-                        data-modal-show="createCategory-modal"
-                        type="button"
-                        className=" justify-center bg-gradient-to-r from-[#B4CD93] to-[#427A5B] hover:shadow-xl"
-                    >
-                        New Category
-                    </PrimaryButton>
                     <CreateCategory />
                 </div>
             </div>

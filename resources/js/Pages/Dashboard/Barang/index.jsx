@@ -1,15 +1,22 @@
 import Authenticated from "@/Layouts/Authenticated/Index";
 import SecondaryButton from "@/Components/SecondaryButton";
 import DangerButton from "@/Components/DangerButton";
+import FlashMessage from "@/Components/FlashMessage";
 import { Head, Link, useForm } from "@inertiajs/react";
 
-export default function Barang({ auth, barangs }) {
+export default function Barang({ auth, barangs, flashMessage }) {
     const { delete: destroy } = useForm();
-
     return (
         <>
             <Head title="Data-Barang" />
             <Authenticated auth={auth}>
+                {flashMessage?.message && (
+                    <FlashMessage
+                        message={flashMessage.message}
+                        type={flashMessage.type}
+                        className={`absolute top-[9%] w-[40%] right-[5%]`}
+                    />
+                )}
                 <div className="bg-second p-5 mt-[70px]">
                     <h1 className="mb-4 text-2xl">Data Barang Gudang</h1>
                     <table className=" w-full table-auto">

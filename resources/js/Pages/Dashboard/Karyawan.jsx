@@ -3,7 +3,7 @@ import { Link } from "@inertiajs/react";
 export default function KaryawanGudang({ karyawan }) {
     return (
         <div className="bg-second p-5">
-            <h3 className="mb-4 text-xl text-center">Data Belanja Gudang</h3>
+            <h3 className="mb-4 text-xl text-center">Data Karyawan Gudang</h3>
             <table className=" w-full table-auto">
                 <tbody className="text-center">
                     {karyawan.map((employe) => (

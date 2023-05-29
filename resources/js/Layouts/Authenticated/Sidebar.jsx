@@ -1,6 +1,7 @@
 import { Link } from "@inertiajs/react";
 
 export default function Sidebar() {
+    console.log();
     return (
         <>
             <aside className="fixed z-10 w-[240px] h-full bg-first shadow-2xl shadow-black  rounded-r-[60px]">
@@ -14,13 +15,13 @@ export default function Sidebar() {
                     <div className="links flex flex-col mt-[80px] h-full gap-[50px]">
                         <div className="text-left">
                             <Link href={route("dashboard.index")}>
-                                <div className="p-2 pl-4 bg-[#B4CD93]">
+                                <div className={`p-2 pl-4 bg-[#B4CD93]`}>
                                     <p>Dashboard</p>
                                 </div>
                             </Link>
 
                             <Link href={route("dashboard.karyawan.index")}>
-                                <div className={`p-2 pl-4 mt-4`}>
+                                <div className={`p-2 pl-4 mt-4 `}>
                                     <p>Data karyawan</p>
                                 </div>
                             </Link>

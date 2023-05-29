@@ -18,7 +18,7 @@ class BarangController extends Controller
      */
     public function index()
     {
-        $barang = Barang::with('category')->get();
+        $barang = Barang::where('user_id', auth()->user()->id)->with('category')->get();
         return Inertia::render('Dashboard/Barang/index', [
             'barangs' => $barang,
         ]);
@@ -86,7 +86,10 @@ class BarangController extends Controller
         ]);
 
         $barang->update($data);
-        return redirect()->route('dashboard.barang.index');
+        return redirect()->route('dashboard.barang.index')->with([
+            'message' => 'Data Barang berhasil di edit',
+            'type' => 'success'
+        ]);;
     }
 
     /**
@@ -98,13 +101,16 @@ class BarangController extends Controller
     public function destroy(Barang $barang)
     {
         $barang->delete();
-        return redirect()->route('dashboard.barang.index');
+        return redirect()->route('dashboard.barang.index')->with([
+            'message' => 'Data Barang berhasil di hapus',
+            'type' => 'error'
+        ]);
     }
 
     // menampilkan data belanja gudang
     public function belanja()
     {
-        $barang = Barang::with('category')->get();
+        $barang = Barang::where('user_id', auth()->user()->id)->with('category')->get();
         return Inertia::render('Dashboard/Belanja/Index', [
             'barangs' => $barang,
         ]);

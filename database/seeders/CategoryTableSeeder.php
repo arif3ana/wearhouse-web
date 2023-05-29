@@ -16,15 +16,19 @@ class CategoryTableSeeder extends Seeder
     {
         $categories = [
             [
+                'user_id' => 1,
                 'name' => 'Elektronik',
             ],
             [
+                'user_id' => 1,
                 'name' => 'Alat Tulis',
             ],
             [
+                'user_id' => 1,
                 'name' => 'Kendaraan',
             ],
             [
+                'user_id' => 1,
                 'name' => 'Meubeul',
             ],
         ];

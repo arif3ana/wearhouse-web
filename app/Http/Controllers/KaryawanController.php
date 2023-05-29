@@ -16,8 +16,8 @@ class KaryawanController extends Controller
      */
     public function index()
     {
-        $employe = Karyawan::all();
-        $out = Karyawan::onlyTrashed()->get();
+        $employe = Karyawan::where('user_id', auth()->user()->id)->get();
+        $out = Karyawan::where('user_id', auth()->user()->id)->onlyTrashed()->get();
         return Inertia::render('Dashboard/Karyawan/Index', [
             'employes' => $employe,
             'outEmployes' => $out
@@ -31,7 +31,7 @@ class KaryawanController extends Controller
      */
     public function create()
     {
-        //
+        return inertia('Dashboard/Karyawan/Create');
     }
 
     /**
@@ -42,7 +42,18 @@ class KaryawanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required',
+            'nik' => 'required|numeric|min:0|max:99999'
+        ]);
+
+        $data['user_id'] = auth()->user()->id;
+
+        Karyawan::create($data);
+        return redirect()->route('dashboard.karyawan.index')->with([
+            'message' => 'Karyawan baru telah di tambahkan',
+            'type' => 'success'
+        ]);
     }
 
     /**
