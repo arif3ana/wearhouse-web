@@ -66,6 +66,9 @@ export default function Belanja({ auth, barangs }) {
                             ))}
                         </tbody>
                     </table>
+                    <p className="text-gray-400 mt-2">
+                        Jumlah belanja barang: {zero.length}
+                    </p>
                 </div>
             </Authenticated>
         </>

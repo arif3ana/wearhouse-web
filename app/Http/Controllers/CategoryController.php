@@ -15,6 +15,7 @@ class CategoryController extends Controller
         $category = $request->validate([
             'name' => 'required|unique:categories',
         ]);
+        $category['user_id'] = auth()->user()->id;
 
         Category::create($category);
 

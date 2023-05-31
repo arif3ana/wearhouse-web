@@ -1,7 +1,5 @@
 import { Link } from "@inertiajs/react";
-
 export default function Sidebar() {
-    console.log();
     return (
         <>
             <aside className="fixed z-10 w-[240px] h-full bg-first shadow-2xl shadow-black  rounded-r-[60px]">
@@ -15,28 +13,61 @@ export default function Sidebar() {
                     <div className="links flex flex-col mt-[80px] h-full gap-[50px]">
                         <div className="text-left">
                             <Link href={route("dashboard.index")}>
-                                <div className={`p-2 pl-4 bg-[#B4CD93]`}>
+                                <div
+                                    className={`p-2 pl-4 rounded-md ${
+                                        location.pathname == "/dashboard"
+                                            ? "bg-[#B4CD93]"
+                                            : "bg-transparent"
+                                    }`}
+                                >
                                     <p>Dashboard</p>
                                 </div>
                             </Link>
 
                             <Link href={route("dashboard.karyawan.index")}>
-                                <div className={`p-2 pl-4 mt-4 `}>
+                                <div
+                                    className={`p-2 pl-4 mt-4 rounded-md ${
+                                        location.pathname ==
+                                        "/dashboard/karyawan"
+                                            ? "bg-[#B4CD93]"
+                                            : "bg-transparent"
+                                    }`}
+                                >
                                     <p>Data karyawan</p>
                                 </div>
                             </Link>
                             <Link href={route("dashboard.barang.index")}>
-                                <div className="p-2 pl-4 mt-4">
+                                <div
+                                    className={`p-2 pl-4 mt-4 rounded-md ${
+                                        location.pathname == "/dashboard/barang"
+                                            ? "bg-[#B4CD93]"
+                                            : "bg-transparent"
+                                    }`}
+                                >
                                     <p>Data barang</p>
                                 </div>
                             </Link>
                             <Link href={route("dashboard.pengiriman.index")}>
-                                <div className="p-2 pl-4 mt-4">
+                                <div
+                                    className={`p-2 pl-4 mt-4 rounded-md ${
+                                        location.pathname ==
+                                        "/dashboard/pengiriman"
+                                            ? "bg-[#B4CD93]"
+                                            : "bg-transparent"
+                                    }`}
+                                >
                                     <p>pengiriman barang</p>
                                 </div>
                             </Link>
                             <Link href={route("dashboard.belanja.index")}>
-                                <div className="p-2 pl-4 mt-4">
+                                <div
+                                    className={`p-2 pl-4 mt-4 rounded-md ${
+                                        location.pathname ==
+                                        "/dashboard/belanja"
+                                            ? "bg-[#B4CD93]"
+                                            : "bg-transparent"
+                                    }`}
+                                >
                                     <p>Belanja gudang</p>
                                 </div>
                             </Link>

@@ -2,8 +2,7 @@ import InputError from "@/Components/InputError";
 import InputLabel from "@/Components/InputLabel";
 import PrimaryButton from "@/Components/PrimaryButton";
 import TextInput from "@/Components/TextInput";
-import CreateCategory from "./CreateCategory";
-import { useForm } from "@inertiajs/react";
+import { Link, useForm } from "@inertiajs/react";
 export default function Create({ categories }) {
     const { data, setData, post, processing, errors } = useForm({
         category_id: "",
@@ -43,6 +42,10 @@ export default function Create({ categories }) {
                                 </option>
                             ))}
                         </select>
+                        <InputError
+                            message={errors.category_id}
+                            className="mt-2"
+                        />
                     </div>
                     <div className="flex gap-3">
                         <div>
@@ -103,7 +106,14 @@ export default function Create({ categories }) {
                     </div>
                 </form>
                 <div className="flex flex-col items-end justify-end mt-5">
-                    <CreateCategory />
+                    <Link href={route("dashboard.create")}>
+                        <PrimaryButton
+                            type="button"
+                            className=" justify-center bg-gradient-to-r from-[#B4CD93] to-[#427A5B] hover:shadow-xl"
+                        >
+                            New Category
+                        </PrimaryButton>
+                    </Link>
                 </div>
             </div>
         </>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Barang;
 use App\Models\Karyawan;
 use App\Models\Pengiriman;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -19,11 +20,11 @@ class PengirimanController extends Controller
     {
         $employes = Karyawan::where('user_id', auth()->user()->id)->get();
         $barangs = Barang::where('user_id', auth()->user()->id)->get();
-        $pengirimans = Pengiriman::where('user_id', auth()->user()->id)->with(['karyawan', 'barang'])->get();
+        $pengirimans = Pengiriman::latest()->search(request('search'));
         return Inertia::render('Dashboard/Pengiriman/Index', [
             "karyawans" => $employes,
             "barangs" => $barangs,
-            "pengirimans" => $pengirimans
+            "pengirimans" => $pengirimans->where('user_id', auth()->user()->id)->get()
         ]);
     }
 

@@ -29,33 +29,42 @@ export default function Update({ auth, barangs, categories }) {
                     <form onSubmit={submit}>
                         <h1 className="mb-4 text-2xl">Edit</h1>
                         <InputLabel htmlFor="category_id" value="Kategori" />
-                        <select
-                            id="category_id"
-                            name="category_id"
-                            className="placeholder:italic placeholder:text-slate-400 block bg-white  border border-slate-300 rounded-md py-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-lx"
-                            onChange={handleOnChange}
-                            defaultValue={barangs.category_id}
-                            required
-                        >
-                            {categories.map((category) => {
-                                if (barangs.category_id == category.id) {
-                                    return (
-                                        <option selected value={category.id}>
-                                            {category.name}
-                                        </option>
-                                    );
-                                } else {
-                                    return (
-                                        <option
-                                            value={category.id}
-                                            key={`${category.id}`}
-                                        >
-                                            {category.name}
-                                        </option>
-                                    );
-                                }
-                            })}
-                        </select>
+                        <div>
+                            <select
+                                id="category_id"
+                                name="category_id"
+                                className="placeholder:italic placeholder:text-slate-400 block bg-white  border border-slate-300 rounded-md py-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-lx"
+                                onChange={handleOnChange}
+                                defaultValue={barangs.category_id}
+                                required
+                            >
+                                {categories.map((category) => {
+                                    if (barangs.category_id == category.id) {
+                                        return (
+                                            <option
+                                                selected
+                                                value={category.id}
+                                            >
+                                                {category.name}
+                                            </option>
+                                        );
+                                    } else {
+                                        return (
+                                            <option
+                                                value={category.id}
+                                                key={`${category.id}`}
+                                            >
+                                                {category.name}
+                                            </option>
+                                        );
+                                    }
+                                })}
+                            </select>
+                            <InputError
+                                message={errors.category_id}
+                                className="mt-2"
+                            />
+                        </div>
                         <div className="flex flex-row gap-2 mt-2">
                             <div>
                                 <InputLabel

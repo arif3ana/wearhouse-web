@@ -14,6 +14,17 @@ class Barang extends Model
     use HasFactory;
 
     protected $fillable = ['user_id', 'category_id', 'nama_barang', 'jumlah_barang'];
+    protected $with = ['category'];
+
+    public function scopeSearch($query, $cari)
+    {
+        $query->when($cari ?? false, function($query, $cari) {
+            return $query->where('nama_barang', 'like', '%'.$cari.'%')
+            ->orWhereHas('category', function($query) use($cari){
+                $query->where('name', 'like', '%'.$cari.'%');
+            });
+        });
+    }
 
     public function category(): BelongsTo
     {

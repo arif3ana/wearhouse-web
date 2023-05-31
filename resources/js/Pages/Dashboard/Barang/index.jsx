@@ -1,7 +1,7 @@
 import Authenticated from "@/Layouts/Authenticated/Index";
 import SecondaryButton from "@/Components/SecondaryButton";
 import DangerButton from "@/Components/DangerButton";
-import FlashMessage from "@/Components/FlashMessage";
+import FlashMessage from "@/Components/flashMessage";
 import { Head, Link, useForm } from "@inertiajs/react";
 
 export default function Barang({ auth, barangs, flashMessage }) {
@@ -76,6 +76,9 @@ export default function Barang({ auth, barangs, flashMessage }) {
                             ))}
                         </tbody>
                     </table>
+                    <p className="text-gray-400 mt-2">
+                        Jumlah barang: {barangs.length}
+                    </p>
                 </div>
             </Authenticated>
         </>

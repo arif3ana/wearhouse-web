@@ -50,7 +50,7 @@ export default function Create({ auth }) {
                                     required
                                 />
                                 <p className="text-gray-400">
-                                    Di rekomendasikan ukuran untuk gambar 60 x
+                                    Di rekomendasikan untuk ukuran gambar 60 x
                                     60
                                 </p>
 

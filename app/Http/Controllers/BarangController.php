@@ -18,9 +18,9 @@ class BarangController extends Controller
      */
     public function index()
     {
-        $barang = Barang::where('user_id', auth()->user()->id)->with('category')->get();
+        $barang = Barang::latest()->search(request('search'));
         return Inertia::render('Dashboard/Barang/index', [
-            'barangs' => $barang,
+            'barangs' => $barang->where('user_id', auth()->user()->id)->get(),
         ]);
     }
 

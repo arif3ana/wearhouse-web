@@ -19,6 +19,15 @@ class Karyawan extends Model
         'nik'
     ];
 
+    public function scopeSearch($query, $cari)
+    {
+        //?? = null coalesing oprator PHP pemanis saat menggunakan ternary dan digunakan untuk mengecek isset
+        $query->when($cari ?? false, function($query, $cari) {
+            return $query->where('name','like','%'.$cari.'%')
+            ->orWhere('nik','like','%'.$cari.'%');
+        });
+    }
+
     public function categoryBarang(): HasMany
     {
         return $this->hasMany(Pengiriman::class);
