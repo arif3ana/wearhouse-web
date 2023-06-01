@@ -16,12 +16,20 @@ class CategoryTableSeeder extends Seeder
     {
         $categories = [
             [
+                'user_id' => 1,
                 'name' => 'Elektronik',
-                'slug' => 'elektronik'
             ],
             [
+                'user_id' => 1,
                 'name' => 'Alat Tulis',
-                'slug' => 'alat-tulis'
+            ],
+            [
+                'user_id' => 1,
+                'name' => 'Kendaraan',
+            ],
+            [
+                'user_id' => 1,
+                'name' => 'Meubeul',
             ],
         ];
         Category::insert($categories);

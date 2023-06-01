@@ -7,15 +7,21 @@ module.exports = {
         "./storage/framework/views/*.php",
         "./resources/views/**/*.blade.php",
         "./resources/js/**/*.jsx",
+        "node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}",
     ],
 
     theme: {
         extend: {
             fontFamily: {
                 sans: ["Figtree", ...defaultTheme.fontFamily.sans],
+                manrope: ["Manrope"],
+            },
+            colors: {
+                first: "#F2F2F2",
+                second: "#FCFCFC",
             },
         },
     },
 
-    plugins: [require("@tailwindcss/forms")],
+    plugins: [require("@tailwindcss/forms"), require("flowbite/plugin")],
 };

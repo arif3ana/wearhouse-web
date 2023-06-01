@@ -36,8 +36,32 @@ class BarangTableSeeder extends Seeder
             ],
             [
                 'user_id' => 1,
+                'category_id' => 3,
+                'nama_barang' => 'mobil',
+                'jumlah_barang' => 0
+            ],
+            [
+                'user_id' => 1,
+                'category_id' => 3,
+                'nama_barang' => 'motor',
+                'jumlah_barang' => 0
+            ],
+            [
+                'user_id' => 1,
+                'category_id' => 4,
+                'nama_barang' => 'meja',
+                'jumlah_barang' => 50
+            ],
+            [
+                'user_id' => 1,
+                'category_id' => 4,
+                'nama_barang' => 'lemari',
+                'jumlah_barang' => 0
+            ],
+            [
+                'user_id' => 1,
                 'category_id' => 1,
-                'nama_barang' => 'lampu',
+                'nama_barang' => 'kipas',
                 'jumlah_barang' => 40
             ],
             

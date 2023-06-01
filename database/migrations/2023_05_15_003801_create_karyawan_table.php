@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('karyawans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
+            $table->string('image');
             $table->string('name');
             $table->integer('nik');
             $table->timestamps();
