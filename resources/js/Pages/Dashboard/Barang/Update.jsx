@@ -27,7 +27,8 @@ export default function Update({ auth, barangs, categories }) {
             <Authenticated auth={auth}>
                 <div className="bg-second p-5 mt-[70px] w-max">
                     <form onSubmit={submit}>
-                        <h1 className="mb-4 text-2xl">Edit</h1>
+                        <h1 className="mb-4 text-2xl">Edit data barang</h1>
+                        <hr />
                         <InputLabel htmlFor="category_id" value="Kategori" />
                         <div>
                             <select

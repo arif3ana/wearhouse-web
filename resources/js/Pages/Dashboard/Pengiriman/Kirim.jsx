@@ -22,7 +22,8 @@ export default function Kirim({ barangs, karyawans }) {
         <>
             <form onSubmit={submit}>
                 <h1 className="mb-4 text-2xl">Kirim Barang</h1>
-                <div className="flex flex-col gap-5 w-[400px]">
+                <hr />
+                <div className="flex flex-col gap-5 w-[400px] mt-5">
                     <div>
                         <select
                             id="barang_id"

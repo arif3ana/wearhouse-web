@@ -33,6 +33,7 @@ export default function Create({ auth }) {
                 <div className="bg-second p-5">
                     <form onSubmit={submit}>
                         <h1 className="mb-4 text-2xl">Tambah Karyawan Baru</h1>
+                        <hr />
                         <div className="flex flex-col gap-2 w-[400px]">
                             <div>
                                 <InputLabel

@@ -37,8 +37,9 @@ export default function Update({ auth, employes }) {
             <Authenticated auth={auth}>
                 <div className="bg-second p-5 mt-[70px] w-full">
                     <form onSubmit={submit}>
-                        <h1 className="mb-4 text-2xl">Edit</h1>
-                        <div className="flex flex-col gap-3 w-[400px]">
+                        <h1 className="mb-4 text-2xl">Edit data karyawan</h1>
+                        <hr />
+                        <div className="flex flex-col gap-3 w-[400px] mt-5">
                             <div>
                                 <img
                                     src={`/storage/${employes.image}`}
