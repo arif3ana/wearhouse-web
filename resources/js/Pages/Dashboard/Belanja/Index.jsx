@@ -13,7 +13,7 @@ export default function Belanja({ auth, barangs }) {
         <>
             <Head title="Data-Barang" />
             <Authenticated auth={auth}>
-                <div className="bg-second p-5 mt-[70px]">
+                <div className="bg-second p-5 mt-[40px]">
                     <h1 className="mb-4 text-2xl">Data Belanja Gudang</h1>
                     <table className=" w-full table-auto">
                         <thead className="bg-[#F7F7F7] h-[40px]">

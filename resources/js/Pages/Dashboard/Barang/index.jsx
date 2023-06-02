@@ -17,7 +17,7 @@ export default function Barang({ auth, barangs, flashMessage }) {
                         className={`absolute top-[9%] w-[40%] right-[5%]`}
                     />
                 )}
-                <div className="bg-second p-5 mt-[70px]">
+                <div className="bg-second p-5 mt-[40px]">
                     <h1 className="mb-4 text-2xl">Data Barang Gudang</h1>
                     {barangs.length <= 0 ? (
                         <p className="text-gray-400 grid place-content-center mt-10 text-xl">
