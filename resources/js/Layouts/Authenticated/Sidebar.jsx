@@ -71,9 +71,18 @@ export default function Sidebar() {
                                     <p>Belanja gudang</p>
                                 </div>
                             </Link>
-                            <div className="p-2 pl-4 mt-4">
-                                <a href="#">Laporann</a>
-                            </div>
+                            <Link href={route("dashboard.laporan.index")}>
+                                <div
+                                    className={`p-2 pl-4 mt-4 rounded-md ${
+                                        location.pathname ==
+                                        "/dashboard/laporan"
+                                            ? "bg-[#B4CD93]"
+                                            : "bg-transparent"
+                                    }`}
+                                >
+                                    <p>Laporann</p>
+                                </div>
+                            </Link>
                         </div>
 
                         <div className="flex h-full  p-2 pl-4 items-end">

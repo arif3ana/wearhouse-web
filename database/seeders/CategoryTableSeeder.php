@@ -25,7 +25,7 @@ class CategoryTableSeeder extends Seeder
             ],
             [
                 'user_id' => 1,
-                'name' => 'Kendaraan',
+                'name' => 'Matrial',
             ],
             [
                 'user_id' => 1,

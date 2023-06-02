@@ -21,6 +21,8 @@
     },
     "dependencies": {
         "flowbite": "^1.6.5",
-        "flowbite-react": "^0.4.4"
+        "flowbite-react": "^0.4.4",
+        "jspdf": "^2.5.1",
+        "jspdf-autotable": "^3.5.29"
     }
 }

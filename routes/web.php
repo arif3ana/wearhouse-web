@@ -4,6 +4,7 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KaryawanController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\PengirimanController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -30,6 +31,7 @@ Route::middleware('auth')->prefix('dashboard')->name('dashboard.')->group(functi
     Route::resource('barang', BarangController::class);
     Route::resource('pengiriman', PengirimanController::class);
     Route::get('belanja', [BarangController::class, 'belanja'])->name('belanja.index');
+    Route::get('laporan', [LaporanController::class, 'index'])->name('laporan.index');
 });
 
 // Route::get('/', function () {
