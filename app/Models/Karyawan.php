@@ -28,7 +28,7 @@ class Karyawan extends Model
         });
     }
 
-    public function categoryBarang(): HasMany
+    public function pengiriman(): HasMany
     {
         return $this->hasMany(Pengiriman::class);
     }

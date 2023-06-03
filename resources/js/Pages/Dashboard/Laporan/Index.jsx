@@ -3,7 +3,6 @@ import Authenticated from "@/Layouts/Authenticated/Index";
 import SecondaryButton from "@/Components/SecondaryButton";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
-import { useEffect } from "react";
 export default function Laporan({ auth, barangs, pengiriman }) {
     const stock = document.getElementById("stock-table");
     const kirim = document.getElementById("pengiriman-table");
@@ -36,12 +35,29 @@ export default function Laporan({ auth, barangs, pengiriman }) {
         });
         const dataUrl = doc.output("datauristring");
         {
-            <Head title="Laporan.pdf" />;
             window.document.write(`<iframe
                 src=${dataUrl}
-                frameborder="0" style="border:0; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%;" allowfullscreen
+                frameborder="0" style="border:0; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%;" 
+                allowfullscreen
+                loading="lazy"
+
             />`);
         }
+    };
+
+    const show = () => {
+        let btn = { presed: "" };
+        if (!btn.presed) {
+            location.reload();
+        }
+        if (sessionStorage.getItem("presed")) {
+            PDF();
+            return sessionStorage.removeItem("presed");
+        }
+        sessionStorage.setItem("presed", true);
+        return alert(
+            "Laporan anda sudah siap...! \n klik tombol convert to pdf untuk melihat laporan anda"
+        );
     };
 
     return (
@@ -121,7 +137,7 @@ export default function Laporan({ auth, barangs, pengiriman }) {
                 <div className="flex justify-end mt-20 mb-20 mr-5">
                     <SecondaryButton
                         className="btnPdf border border-green-400  hover:bg-green-400"
-                        onClick={PDF}
+                        onClick={show}
                     >
                         Convert to PDF
                     </SecondaryButton>
