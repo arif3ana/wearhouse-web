@@ -15,7 +15,7 @@ class Category extends Model
 
     protected $fillable = ['user_id','name'];
 
-    public function categoryBarang(): HasMany
+    public function barang(): HasMany
     {
         return $this->hasMany(Barang::class);
     }

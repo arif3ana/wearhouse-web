@@ -16,6 +16,7 @@ export default function KaryawanGudang({ karyawan }) {
                                     className="w-[60px] h-[60px] rounded-full"
                                     src={`/storage/${employe.image}`}
                                     alt={employe.name}
+                                    loading="lazy"
                                 />
                             </td>
                             <td>{employe.name}</td>

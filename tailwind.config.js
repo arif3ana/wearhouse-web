@@ -20,6 +20,10 @@ module.exports = {
                 first: "#F2F2F2",
                 second: "#FCFCFC",
             },
+            screens: {
+                laptopLg: "1160px",
+                laptopXl: "1360px",
+            },
         },
     },
 

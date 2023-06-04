@@ -41,25 +41,23 @@ export default function Update({ auth, employes }) {
                         <hr />
                         <div className="flex flex-col gap-3 w-[400px] mt-5">
                             <div>
+                                <InputLabel htmlFor="image" value="Poto" />
                                 <img
                                     src={`/storage/${employes.image}`}
                                     className="w-40 mb-3"
+                                    loading="lazy"
                                 />
-
-                                <InputLabel htmlFor="image" value="Poto" />
 
                                 <TextInput
                                     id="image"
                                     name="image"
                                     type="file"
-                                    className="mt-1 block w-full "
-                                    isError={errors.name}
+                                    className="mt-1 block w-full"
                                     onChange={handleOnChange}
-                                    required
                                 />
 
                                 <InputError
-                                    message={errors.name}
+                                    message={errors.image}
                                     className="mt-2"
                                 />
                             </div>
@@ -74,7 +72,6 @@ export default function Update({ auth, employes }) {
                                     className="mt-1 block w-full "
                                     autoComplete="name"
                                     isFocused={true}
-                                    isError={errors.name}
                                     onChange={handleOnChange}
                                     required
                                 />
