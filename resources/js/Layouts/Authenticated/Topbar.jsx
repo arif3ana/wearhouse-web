@@ -11,6 +11,7 @@ export default function Topbar({ name }) {
                         : "justify-end"
                 } items-center cursor-pointer w-full py-5 bg-first pl-[300px] pr-[100px]`}
             >
+                {/* for inputSearch */}
                 {location.pathname == "/dashboard/karyawan" ||
                 location.pathname == "/dashboard/barang" ||
                 location.pathname == "/dashboard/pengiriman" ? (

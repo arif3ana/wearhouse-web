@@ -6,6 +6,7 @@ import autoTable from "jspdf-autotable";
 export default function Laporan({ auth, barangs, pengiriman }) {
     const stock = document.getElementById("stock-table");
     const kirim = document.getElementById("pengiriman-table");
+    // Feature converter PDF use peckage jspdf
     const PDF = () => {
         const doc = new jsPDF();
         const width = doc.internal.pageSize.getWidth();
@@ -45,6 +46,7 @@ export default function Laporan({ auth, barangs, pengiriman }) {
         }
     };
 
+    //event for button converter
     const show = () => {
         let btn = { presed: "" };
         if (!btn.presed) {

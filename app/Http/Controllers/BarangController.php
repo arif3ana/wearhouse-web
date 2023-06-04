@@ -18,6 +18,7 @@ class BarangController extends Controller
      */
     public function index()
     {
+        // search for chek request from input search and sand to models
         $barang = Barang::latest()->search(request('search'));
         return Inertia::render('Dashboard/Barang/index', [
             'barangs' => $barang->where('user_id', auth()->user()->id)->get(),
@@ -66,7 +67,7 @@ class BarangController extends Controller
     {
         return inertia('Dashboard/Barang/Update', [
             'barangs' => $barang,
-            'categories' => Category::all()
+            'categories' => Category::where('user_id', auth()->user()->id)->get()
         ]);
     }
 
@@ -110,7 +111,7 @@ class BarangController extends Controller
     // menampilkan data belanja gudang
     public function belanja()
     {
-        $barang = Barang::where('user_id', auth()->user()->id)->with('category')->get();
+        $barang = Barang::where('user_id', auth()->user()->id)->get();
         return Inertia::render('Dashboard/Belanja/Index', [
             'barangs' => $barang,
         ]);

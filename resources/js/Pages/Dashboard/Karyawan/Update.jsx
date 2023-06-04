@@ -13,6 +13,7 @@ export default function Update({ auth, employes }) {
     const handleOnChange = (event) => {
         setData(
             event.target.name,
+            //for sand request type file
             event.target.type === "file"
                 ? event.target.files[0]
                 : event.target.value

@@ -7,13 +7,13 @@ import PrimaryButton from "@/Components/PrimaryButton";
 import TextInput from "@/Components/TextInput";
 import { Head, Link, useForm } from "@inertiajs/react";
 
-export default function Login({ status, canResetPassword }) {
+export default function Login({ status }) {
     const { data, setData, post, processing, errors, reset } = useForm({
         email: "",
         password: "",
-        // remember: "",
     });
 
+    //this actually not used
     useEffect(() => {
         return () => {
             reset("password");
@@ -21,14 +21,10 @@ export default function Login({ status, canResetPassword }) {
     }, []);
 
     const handleOnChange = (event) => {
-        setData(
-            event.target.name,
-            // event.target.type === "checkbox"
-            //     ? event.target.checked :
-            event.target.value
-        );
+        setData(event.target.name, event.target.value);
     };
 
+    // event for chekbox use to show password
     const showPassword = (e) => {
         const pswr = document.querySelector("#password");
         e.target.checked
@@ -88,11 +84,7 @@ export default function Login({ status, canResetPassword }) {
 
                 <div className="block mt-2">
                     <label className="flex items-center">
-                        <Checkbox
-                            // name="showPassword"
-                            // value={data.remember}
-                            onChange={showPassword}
-                        />
+                        <Checkbox onChange={showPassword} />
                         <span className="ml-2 text-sm text-gray-600">
                             Show password
                         </span>
@@ -106,15 +98,7 @@ export default function Login({ status, canResetPassword }) {
                     >
                         Sign in
                     </PrimaryButton>
-                    <div className="flex flex-row gap-7">
-                        {canResetPassword && (
-                            <Link
-                                href={route("password.request")}
-                                className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                            >
-                                Forgot your password?
-                            </Link>
-                        )}
+                    <div className="flex justify-center">
                         <Link
                             href={route("register")}
                             className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"

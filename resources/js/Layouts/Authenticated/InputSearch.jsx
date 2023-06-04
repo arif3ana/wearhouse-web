@@ -9,6 +9,7 @@ export default function InputSearch() {
         setData(event.target.name, event.target.value);
     };
 
+    // conditioning to check which route it is on
     const submit = (e) => {
         e.preventDefault();
         if (location.pathname == "/dashboard/karyawan") {

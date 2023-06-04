@@ -17,6 +17,7 @@ class KaryawanController extends Controller
      */
     public function index()
     {
+        // search for chek request from input search and sand to models
         $employe = Karyawan::latest()->search(request('search'));
         
         $out = Karyawan::where('user_id', auth()->user()->id)->onlyTrashed()->get();
@@ -51,6 +52,7 @@ class KaryawanController extends Controller
         ]);
 
         $data['user_id'] = auth()->user()->id;
+        // saving file image to storage
         $data['image'] = Storage::disk('public',)->put('imgKaryawan', $request->file('image'));
 
         Karyawan::create($data);
@@ -99,6 +101,7 @@ class KaryawanController extends Controller
             'nik' => 'nullable|numeric|min:0|max:9999999999'
         ]);
 
+        //deleteing image if image repleced
         if ($request->file('image')) {
             $data['image'] = Storage::disk('public')->put('imgKaryawan', $request->file('image'));
             Storage::disk('public')->delete($karyawan->image);
@@ -119,6 +122,7 @@ class KaryawanController extends Controller
      * @param  \App\Models\Karyawan  $karyawan
      * @return \Illuminate\Http\Response
      */
+    // feature temporary deleting
     public function destroy(Karyawan $karyawan)
     {
         $karyawan->delete();
@@ -129,6 +133,7 @@ class KaryawanController extends Controller
         ]);
     }
 
+    // feature restore data
     public function restore($id)
     {
         Karyawan::onlyTrashed()->where('id', $id)->restore();
@@ -138,6 +143,7 @@ class KaryawanController extends Controller
         ]);
     }
 
+    // feature deleting permanen
     public function destroy_permanen($id)
     {
         $karyawan = Karyawan::onlyTrashed()->where('id', $id);

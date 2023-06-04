@@ -16,6 +16,8 @@ class Pengiriman extends Model
 
     public function scopeSearch($query, $cari)
     {
+        // menerima request dari controller untuk feature pencarian 
+        // receive a request from the controller for the search feature
         $query->when($cari ?? false, function($query, $cari) {
             return $query->whereDate('created_at','like', '%'.$cari.'%')
             ->orWhereMonth('created_at', '=', 'like', '%'.date('m', strtotime($cari)).'%')

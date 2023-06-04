@@ -16,6 +16,8 @@ class Barang extends Model
     protected $fillable = ['user_id', 'category_id', 'nama_barang', 'jumlah_barang'];
     protected $with = ['category'];
 
+    // menerima request dari controller untuk feature pencarian 
+    // receive a request from the controller for the search feature
     public function scopeSearch($query, $cari)
     {
         $query->when($cari ?? false, function($query, $cari) {

@@ -1,9 +1,9 @@
-import { useEffect } from "react";
 import GuestLayout from "@/Layouts/GuestLayout";
 import InputError from "@/Components/InputError";
 import InputLabel from "@/Components/InputLabel";
 import PrimaryButton from "@/Components/PrimaryButton";
 import TextInput from "@/Components/TextInput";
+import Checkbox from "@/Components/Checkbox";
 import { Head, Link, useForm } from "@inertiajs/react";
 
 export default function Register() {
@@ -12,14 +12,15 @@ export default function Register() {
         wearhouse_name: "",
         email: "",
         password: "",
-        // password_confirmation: "",
     });
 
-    // useEffect(() => {
-    //     return () => {
-    //         reset("password", "password_confirmation");
-    //     };
-    // }, []);
+    // event for chekbox use to show password
+    const showPassword = (e) => {
+        const pswr = document.querySelector("#password");
+        e.target.checked
+            ? pswr.setAttribute("type", "text")
+            : pswr.setAttribute("type", "password");
+    };
 
     const handleOnChange = (event) => {
         setData(event.target.name, event.target.value);
@@ -106,28 +107,14 @@ export default function Register() {
                     <InputError message={errors.password} className="mt-2" />
                 </div>
 
-                {/* <div className="mt-4">
-                    <InputLabel
-                        htmlFor="password_confirmation"
-                        value="Confirm Password"
-                    />
-
-                    <TextInput
-                        id="password_confirmation"
-                        type="password"
-                        name="password_confirmation"
-                        value={data.password_confirmation}
-                        className="mt-1 block w-full"
-                        autoComplete="new-password"
-                        onChange={handleOnChange}
-                        required
-                    />
-
-                    <InputError
-                        message={errors.password_confirmation}
-                        className="mt-2"
-                    />
-                </div> */}
+                <div className="block mt-2">
+                    <label className="flex items-center">
+                        <Checkbox onChange={showPassword} />
+                        <span className="ml-2 text-sm text-gray-600">
+                            Show password
+                        </span>
+                    </label>
+                </div>
 
                 <div className="flex flex-col items-center justify-center mt-5">
                     <PrimaryButton

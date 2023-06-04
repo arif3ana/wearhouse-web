@@ -3,7 +3,7 @@ import SecondaryButton from "@/Components/SecondaryButton";
 import DangerButton from "@/Components/DangerButton";
 import { Head, useForm, Link } from "@inertiajs/react";
 export default function Belanja({ auth, barangs }) {
-    const { delete: destroy } = useForm();
+    const { delete: destroy } = useForm(); //for delete button
 
     const zero = barangs.filter((barang) => {
         return barang["jumlah_barang"] === 0;

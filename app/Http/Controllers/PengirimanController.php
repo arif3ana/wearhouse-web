@@ -53,7 +53,8 @@ class PengirimanController extends Controller
         ]);
         $kirim['user_id'] = auth()->user()->id;
 
-        // mengupdate jumlah_barang dari table barang dangan hasil dari jumlah_barang di kurang jumlah pengiriman 
+        // mengupdate jumlah_barang dari table barang dangan hasil dari jumlah_barang di kurang jumlah pengiriman
+        // update the item_quantity from the goods table with the result of the item_count less the number of shipments 
         $barangs = Barang::where('id', $request->barang_id)->get();
         foreach ($barangs as $barang) {
             $jumlah = ($barang->jumlah_barang);
@@ -65,6 +66,7 @@ class PengirimanController extends Controller
                 'type' => 'error'
             ]);
         }
+        //updating feld jumlah barang from table Barang
         Barang::where('jumlah_barang', $jumlah)->update(['jumlah_barang' => $result]);
         Pengiriman::create($kirim);
         return redirect()->route('dashboard.pengiriman.index')->with([
