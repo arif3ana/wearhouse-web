@@ -147,14 +147,4 @@ class KaryawanController extends Controller
             'type' => 'error'
         ]);
     }
-
-    // public function search(Request $request)
-    // {
-    //     dd($request);
-    //     // $cari = $request->query('search');
-    //     // $cari = $request->search;
-    //     // $employe = Karyawan::query()->when($cari, fn ($query) => $query->where('name','like','%'.$cari.'%')->orWhere('nik','like','%'.$cari.'%'))->get();
-    //     // $employe = Karyawan::where('name','Like',"%$cari%")->orWhere('nik','Like',"%$cari%")->get();
-    //     // return inertia('Dashboard/Karyawan/Index', ['employes' => $employe]);
-    // }
 }
